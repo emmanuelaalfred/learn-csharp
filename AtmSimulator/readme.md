@@ -2,15 +2,15 @@
 
 Write a program that simulates an ATM machine for testing. The program should allow a user to:
 
-* Enter an amount to Withdraw on Debit or Credit[^1]
-* Print the dispensed money notes to the console
+* [x] Enter an amount to Withdraw on Debit or Credit[^1]
+* [ ] Print the dispensed money notes to the console
 
 ## Constraints
 
-* Limit the amount of money that can be withdrawn to �600
-* Dispense money in multiples of 10, 20, 50
-* Dispense the least amount of paper money possible
-* Validate the user withdrawal amount request and only dispense valid amounts of paper money
+* [x] Limit the amount of money that can be withdrawn to $600
+* [ ] Dispense money in multiples of 10, 20, 50
+* [ ] Dispense the least amount of paper money possible
+* [ ] Validate the user withdrawal amount request and only dispense valid amounts of paper money
 
 ## Sample Outputs
 
