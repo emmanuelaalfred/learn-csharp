@@ -11,6 +11,12 @@ static class Program
         if (amount >= 600)
         {
             Console.WriteLine("This ATM can only dispense amounts up to £600.");
+
+        }
+        else if (amount % 10 != 0)
+        {
+            Console.WriteLine("This ATM can only dispense amounts in multiples of 10.");
+
         }
         else
         {
