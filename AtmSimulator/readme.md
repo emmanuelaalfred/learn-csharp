@@ -8,8 +8,8 @@ Write a program that simulates an ATM machine for testing. The program should al
 ## Constraints
 
 * [x] Limit the amount of money that can be withdrawn to $600
-* [ ] Dispense money in multiples of 10, 20, 50
-* [ ] Dispense the least amount of paper money possible
+* [x] Dispense money in multiples of 10, 20, 50
+* [x] Dispense the least amount of paper money possible
 * [x] Validate the user withdrawal amount request and only dispense valid amounts of paper money
 
 ## Sample Outputs

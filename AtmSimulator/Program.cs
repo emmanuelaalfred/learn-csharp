@@ -1,4 +1,6 @@
-﻿namespace AtmSimulator;
+﻿using System.Numerics;
+
+namespace AtmSimulator;
 static class Program
 {
     static void Main()
@@ -21,6 +23,21 @@ static class Program
         else
         {
             Console.WriteLine($"Dispense ${amount}");
+
+            int numberOf50 = amount / 50;
+            amount = amount - 50 * numberOf50;
+
+            int numberOf20 = amount / 20;
+            amount = amount - 20 * numberOf20;
+
+            int numberOf10 = amount / 10;
+
+
+            Console.WriteLine($"Dispensing {numberOf50} x 50 notes");
+            Console.WriteLine($"Dispensing {numberOf20} x 20 note");
+            Console.WriteLine($"Dispensing {numberOf10} x 10 noteS");
         }
+
     }
+
 }
