@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class FactoryProduction
 {
@@ -8,14 +9,42 @@ class FactoryProduction
     /// <param name="production">A two-dimensional array storing the production data.</param>
     static void PrintProduction(int[,] production)
     {
-
-
         DisplayRowHeadings(production);
 
         for (int day = 0; day < production.GetLength(0); day++)
         {
             DisplayDayRow(production, day);
         }
+    }
+
+    static void Display2DArray(int[,] array)
+    {
+        for (int rowIndex = 0; rowIndex < array.GetLength(0); rowIndex++)
+        {
+            DisplayRowColumns(array, rowIndex);
+        }
+    }
+    static void DisplayRowColumns(int[,] array, int rowIndex)
+    {
+        for (int columnIndex = 0; columnIndex < array.GetLength(1); columnIndex++)
+            Console.Write($"{array[rowIndex, columnIndex]}\t");
+        Console.WriteLine();
+    }
+
+    static int SumRowColumns(int[,] array, int rowIndex)
+    {
+        int sum = 0;
+        for (int columnIndex = 0; columnIndex < array.GetLength(1); columnIndex++)
+            sum += array[rowIndex, columnIndex];
+        return sum;
+    }
+
+    static int SumColumnRows(int[,] array, int columnIndex)
+    {
+        int sum = 0;
+        for (int rowIndex = 0; rowIndex < array.GetLength(0); rowIndex++)
+            sum += array[rowIndex, columnIndex];
+        return sum;
     }
 
     private static void DisplayDayRow(int[,] production, int day)
@@ -57,24 +86,33 @@ class FactoryProduction
             int sum = 0;
             for (int day = 0; day < production.GetLength(0); day++)
             {
-               sum +=(production[day, factory]);
+                sum += (production[day, factory]);
 
             }
-            Console.WriteLine((double) sum/production.GetLength(0));
+            Console.WriteLine((double)sum / production.GetLength(0));
         }
 
 
         // Task 3: Calculate and present the total production for each day over the week.
-
-        for (int day = 0; day < production.GetLength(0); day++ )
+        Console.WriteLine("Task 3: Calculate and present the total production for each day over the week.");
+        for (int day = 0; day < production.GetLength(0); day++)
         {
             int total = 0;
-            for (int factory = 0; factory < production.GetLength(1); factory++ )
+            for (int factory = 0; factory < production.GetLength(1); factory++)
             {
                 total += production[day, factory];
             }
             Console.WriteLine(total);
 
         }
+
+        // Task 4: Calculate and present the total production for each factory over the week.
+
+        Console.WriteLine("Task 4: Calculate and present the total production for each factory over the week.");
+        for(int columnIndex=0; columnIndex < production.GetLength(1); columnIndex++)
+        {
+            Console.WriteLine(SumColumnRows(production, columnIndex));
+        }
+
     }
 }
