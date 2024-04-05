@@ -8,19 +8,30 @@ class FactoryProduction
     /// <param name="production">A two-dimensional array storing the production data.</param>
     static void PrintProduction(int[,] production)
     {
-        Console.Write("Day\t");
 
-        for (int factory = 0; factory < production.GetLength(1); factory++)
-            Console.Write($"Factory {factory + 1}\t");
-        Console.WriteLine();
+
+        DisplayRowHeadings(production);
 
         for (int day = 0; day < production.GetLength(0); day++)
         {
-            Console.Write($"Day {day + 1}:\t");
-            for (int factory = 0; factory < production.GetLength(1); factory++)
-                Console.Write($"{production[day, factory]}\t");
-            Console.WriteLine();
+            DisplayDayRow(production, day);
         }
+    }
+
+    private static void DisplayDayRow(int[,] production, int day)
+    {
+        Console.Write($"Day {day + 1}:\t");
+        for (int factory = 0; factory < production.GetLength(1); factory++)
+            Console.Write($"{production[day, factory]}\t");
+        Console.WriteLine();
+    }
+
+    private static void DisplayRowHeadings(int[,] production)
+    {
+        Console.Write("Day\t");
+        for (int factory = 0; factory < production.GetLength(1); factory++)
+            Console.Write($"Fac {factory + 1}\t");
+        Console.WriteLine();
     }
 
     /// <summary>
@@ -41,7 +52,29 @@ class FactoryProduction
         PrintProduction(production);
 
         // Task 2: Calculate and present the average production for each factory over the week.
+        for (int factory = 0; factory < production.GetLength(1); factory++)
+        {
+            int sum = 0;
+            for (int day = 0; day < production.GetLength(0); day++)
+            {
+               sum +=(production[day, factory]);
+
+            }
+            Console.WriteLine((double) sum/production.GetLength(0));
+        }
+
 
         // Task 3: Calculate and present the total production for each day over the week.
+
+        for (int day = 0; day < production.GetLength(0); day++ )
+        {
+            int total = 0;
+            for (int factory = 0; factory < production.GetLength(1); factory++ )
+            {
+                total += production[day, factory];
+            }
+            Console.WriteLine(total);
+
+        }
     }
 }
